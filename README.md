@@ -2,7 +2,7 @@
 
 Anti Traffic Volume Analysis
 
-> In short: most websites have a fixed number of bytes, this is the page size. Slight deviations exists. Someone can calulate the hashesize of a page, and store it. Now they have traffic volume hashes. Even if your end-to-end connection is encrypted, a malicious actor might calculate your traffic volume, despite your encryption. If the malicious actor has a database full of relevant and daily updated hashes of many websites (easy to scrape the entire IPv4 space and calculate hashes multiple times a day), they can accurately guess which website you are probably viewing, in real time. This is called traffic volume analysis, and there are ways to mitage this.
+> In short: most websites have a fixed number of bytes, this is the page size. Slight deviations exists. Someone can calulate the hashsize of a page, and store it. Now they have traffic volume hashes. Even if your end-to-end connection is encrypted, a malicious actor might calculate your traffic volume, despite your encryption. If the malicious actor has a database full of relevant and daily updated hashes of many websites (easy to scrape the entire IPv4 space and calculate hashes multiple times a day), they can accurately guess which website you are probably viewing, in real time. This is called traffic volume analysis, and there are ways to mitage this.
 
 ## What is Traffic Volume Analysis?
 
