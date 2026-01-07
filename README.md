@@ -2,7 +2,7 @@
 
 Anti Traffic Volume Analysis
 
-> In short: most websites have a fixed number of bytes, this is the page size. Slight deviations exists. Someone can calulate the hashsize of a page, and store it. Now they have traffic volume hashes. Even if your end-to-end connection is encrypted, a malicious actor might calculate your traffic volume, despite your encryption. If the malicious actor has a database full of relevant and daily updated hashes of many websites (easy to scrape the entire IPv4 space and calculate hashes multiple times a day), they can accurately guess which website you are probably viewing, in real time. This is called traffic volume analysis, and there are ways to mitage this.
+> In short: Most websites have a largely fixed total page size, with only minor variations. This means the total number of bytes transferred when loading a page is often predictable. An observer can measure this traffic volume, store it as a fingerprint, and build a database of such fingerprints for many websites. Even when an end‑to‑end connection is fully encrypted, a malicious actor can still observe traffic volume and timing. By comparing this metadata against a large, frequently updated database of known site fingerprints - which can be obtained by continuously crawling large parts of the IPv4 space - the observer can often infer which website a user is visiting in real time. This technique is known as traffic volume analysis (or website fingerprinting). While encryption protects the content of communication, it does not hide metadata such as packet sizes and transfer patterns. There are mitigation techniques, but they typically involve trade‑offs in bandwidth, latency, or usability.
 
 ## What is Traffic Volume Analysis?
 
