@@ -44,11 +44,11 @@ The class generates cryptographically random data and embeds it into your HTML r
 
 ### Features
 
-- -8 Different Padding Methods-: Randomly selects from HTML comments, hidden images, JSON-LD, CSS/JS comments, SVG elements, data attributes, and noscript tags
-- -Configurable Size Range-: Set minimum and maximum padding sizes to match your needs
-- -Cryptographically Secure-: Uses `random_bytes()` for unpredictable data generation
-- -User-Invisible-: All padding is completely hidden from end users
-- -Flexible API-: Single method or multiple methods per response
+- -8 Different Padding Methods: Randomly selects from HTML comments, hidden images, JSON-LD, CSS/JS comments, SVG elements, data attributes, and noscript tags
+- -Configurable Size Range: Set minimum and maximum padding sizes to match your needs
+- -Cryptographically Secure: Uses `random_bytes()` for unpredictable data generation
+- -User-Invisible: All padding is completely hidden from end users
+- -Flexible API: Single method or multiple methods per response
 
 ## Installation
 
@@ -142,47 +142,47 @@ Returns current configuration including min/max sizes and available methods coun
 
 ## Available Padding Methods
 
-1. -HTML Comments-: `<!-- base64_data -->`
-2. -Hidden Base64 Images-: Invisible 1x1 PNG with `display:none`
-3. -JSON-LD Structured Data-: Valid but meaningless schema.org markup
-4. -CSS Comments-: Inside `<style>` tags
-5. -JavaScript Comments-: Inside `<script>` tags
-6. -Hidden SVG-: SVG elements with `display:none` and data in `<desc>`
-7. -Data Attributes-: Hidden divs with `data-*` attributes
-8. -Noscript Tags-: Content invisible to JavaScript-enabled browsers
+1. -HTML Comments: `<!-- base64_data -->`
+2. -Hidden Base64 Images: Invisible 1x1 PNG with `display:none`
+3. -JSON-LD Structured Data: Valid but meaningless schema.org markup
+4. -CSS Comments: Inside `<style>` tags
+5. -JavaScript Comments: Inside `<script>` tags
+6. -Hidden SVG: SVG elements with `display:none` and data in `<desc>`
+7. -Data Attributes: Hidden divs with `data-*` attributes
+8. -Noscript Tags: Content invisible to JavaScript-enabled browsers
 
 ## Performance Considerations
 
 Generating large amounts of random data and embedding it in every response has performance implications:
 
-- -CPU Usage-: `random_bytes()` is cryptographically secure but CPU-intensive
-- -Bandwidth-: Every response becomes 50KB-5MB larger
-- -Memory-: Large padding strings consume RAM
-- -Page Load Time-: Users download additional data
+- -CPU Usage: `random_bytes()` is cryptographically secure but CPU-intensive
+- -Bandwidth: Every response becomes 50KB-5MB larger
+- -Memory: Large padding strings consume RAM
+- -Page Load Time: Users download additional data
 
 ### Optimization Tips
 
-1. -Adjust ranges based on actual page sizes-: If your pages are typically 100KB, padding to 5MB is overkill
-2. -Use caching-: Pre-generate padding chunks and reuse them periodically
-3. -Consider CDN implications-: Extra bandwidth through CDNs increases costs
-4. -Monitor server resources-: Watch CPU and memory usage under load
-5. -A/B test-: Balance security with performance for your use case
+1. -Adjust ranges based on actual page sizes: If your pages are typically 100KB, padding to 5MB is overkill
+2. -Use caching: Pre-generate padding chunks and reuse them periodically
+3. -Consider CDN implications: Extra bandwidth through CDNs increases costs
+4. -Monitor server resources: Watch CPU and memory usage under load
+5. -A/B test: Balance security with performance for your use case
 
 ## Limitations
 
 Traffic volumizer is not a complete solution to traffic analysis:
 
-- -Range-based analysis-: Even with padding, a 100KB page padded to 200KB is distinguishable from a 1MB page
-- -Timing correlation-: If a user loads Page A, then Page B, timing patterns can still reveal this sequence
-- -Behavioral patterns-: Frequency and order of requests can still be analyzed
-- -Resource cost-: Significant bandwidth and processing overhead
+- -Range-based analysis: Even with padding, a 100KB page padded to 200KB is distinguishable from a 1MB page
+- -Timing correlation: If a user loads Page A, then Page B, timing patterns can still reveal this sequence
+- -Behavioral patterns: Frequency and order of requests can still be analyzed
+- -Resource cost: Significant bandwidth and processing overhead
 
 For maximum protection against sophisticated adversaries, consider combining this with:
 
-- -Tor Browser-: Onion routing provides stronger traffic analysis resistance
-- -Cover Traffic-: Generate fake background requests
-- -Uniform Sizing-: Pad all responses to exactly the same size
-- -Timing Obfuscation-: Add random delays between requests
+- -Tor Browser: Onion routing provides stronger traffic analysis resistance
+- -Cover Traffic: Generate fake background requests
+- -Uniform Sizing: Pad all responses to exactly the same size
+- -Timing Obfuscation: Add random delays between requests
 
 ## Security Notes
 
