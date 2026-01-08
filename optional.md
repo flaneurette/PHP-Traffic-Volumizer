@@ -1,8 +1,13 @@
-// PHP
+# Optional
 
-// You could modify the volumizer class to generate functional javascript, but one that does not do anything significant. (making it much harder for profilers from detecting you are using a volumizer by creating legitimate javascript)
-// Remember: AI based profilers can probably understand what you are doing. Not effective enough.
-// Be creative.
+You could modify the volumizer class to generate functional javascript, but one that does not do anything significant. (making it much harder for profilers from detecting you are using a volumizer by creating legitimate javascript)
+
+Remember: AI based profilers can probably understand what you are doing. Not effective enough.
+
+Be creative.
+
+```
+<?php
 
 function generateNoOpJavaScript($complexity = 'medium') {
   
@@ -62,10 +67,12 @@ function generateNoOpScript($lineCount = 5, $complexity = 'medium') {
 
 // Generate the script
 $jsCode = generateNoOpScript(5, 'medium');
+?>
+```
 
-// PHP
+HTML:
 
-<!-- EXAMPLE -->
+```
 
 <html>
 <h2>Generated Code:</h2>
@@ -82,3 +89,4 @@ $jsCode = generateNoOpScript(5, 'medium');
 </script>
   
 </html>
+```
