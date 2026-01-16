@@ -1,6 +1,8 @@
 # PHP Traffic Volumizer
 
-Anti Traffic Volume Analysis
+> DISCLAIMER: complete anonymity on the internet, is extremely difficult if not impossible. Especially with ML and AI profilers nowadays. Once connected to the internet, all bets are off. If you do/plan something bad, sooner or later you WILL get caught. If you are an activist, journalist, dissident, whistleblower, please take extreme caution and if possible consult a internet security expert for solid advice on how to stay anonymous in the ML/AI age. Tor is good, but it's not bulletproof. Visit: https://ssd.eff.org for more info.
+
+# Anti Traffic Volume Analysis
 
 > In short: Most websites have a largely fixed total page size, with only minor variations. This means the total number of bytes transferred when loading a page is often predictable. An observer can measure this traffic volume, store it as a fingerprint, and build a database of such fingerprints for many websites. Even when an end‑to‑end connection is fully encrypted, a malicious actor can still observe traffic volume and timing. By comparing this metadata against a large, frequently updated database of known site fingerprints - which can be obtained by continuously crawling large parts of the IPv4 space - the observer can often infer which website a user is visiting in real time. This technique is known as traffic volume analysis (or website fingerprinting). While encryption protects the content of communication, it does not hide metadata such as packet sizes and transfer patterns. There are mitigation techniques, but they typically involve trade‑offs in bandwidth, latency, or usability.
 
