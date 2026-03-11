@@ -39,7 +39,7 @@ All page sizes combined, results in a unique hash: `a2d65e2d7d36e5b4dac127a20a7b
 
 Advanced traffic analysis simply pre- computes every pattern on a given site by scraping ipv4 space on a daily basis (very simple),
 and generating hashes for each unique URI. It can also precompute total hashlength, or analyze this in real time:
-- > predictable pattern, guess accuracy is very high, higher if the user stays on a website for a long time.
+-> predictable pattern, guess accuracy is very high, higher if the user stays on a website for a long time.
 
 
 ### Risks
@@ -97,17 +97,17 @@ $padder = new TrafficPadding(50 * 1024, 5 * 1024 * 1024); // 50KB to 5MB
 
 // Single random method
 $htmlContent = "<html><body>Your content</body></html>";
-echo $padder- >generate($htmlContent);
+echo $padder->generate($htmlContent);
 
 // Multiple random methods
-echo $padder- >generateMultiple($htmlContent, 3);
+echo $padder->generateMultiple($htmlContent, 3);
 
 // Change range
-$padder- >setRange(100 * 1024, 10 * 1024 * 1024); // 100KB to 10MB
-echo $padder- >generate($htmlContent);
+$padder->setRange(100 * 1024, 10 * 1024 * 1024); // 100KB to 10MB
+echo $padder->generate($htmlContent);
 
 // Check configuration
-print_r($padder- >getConfig());
+print_r($padder->getConfig());
 ```
 
 ### Integration with Output Buffering
@@ -128,7 +128,7 @@ ob_start();
 $content = ob_get_clean();
 
 $padder = new TrafficPadding();
-echo $padder- >generate($content);
+echo $padder->generate($content);
 ```
 
 ### WordPress Integration
@@ -138,7 +138,7 @@ echo $padder- >generate($content);
 function apply_traffic_padding($content) {
     require_once get_template_directory() . '/class.volumizer.php';
     $padder = new TrafficPadding(50 * 1024, 5 * 1024 * 1024);
-    return $padder- >generate($content);
+    return $padder->generate($content);
 }
 
 add_filter('final_output', 'apply_traffic_padding');
@@ -153,6 +153,7 @@ new TrafficPadding(int $minSize, int $maxSize)
 ```
 
 `$minSize`: Minimum padding size in bytes (default: 51200 = 50KB)
+
 `$maxSize`: Maximum padding size in bytes (default: 5242880 = 5MB)
 
 ### Methods
@@ -171,7 +172,7 @@ Returns current configuration including min/max sizes and available methods coun
 
 ### Available Padding Methods
 
-1. HTML Comments: `<!- - base64_data - - >`
+1. HTML Comments: `<!-- base64_data -->`
 2. Hidden Base64 Images: Invisible 1x1 PNG with `display:none`
 3. JSON- LD Structured Data: Valid but meaningless schema.org markup
 4. CSS Comments: Inside `<style>` tags
@@ -189,12 +190,14 @@ This is especially useful in SSL/TLS requests.
 
 ```
 $fake_headers = [
-    'X- Cache- Node',
-    'X- Request- ID', 
-    'X- Served- By',
-    'X- Timer',
-    'X- Edge- Node',
-    'X- Powered- Node',
+    'X-Cache-Node',
+    'X-Request-ID', 
+    'X-Served-By',
+    'X-Timer',
+    'X-Edge-Node',
+    'X-Powered-Node',
+    'Node-id',
+    'NodeJS-server',
 ];
 
 // pick random subset
