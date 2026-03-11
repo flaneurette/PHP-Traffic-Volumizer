@@ -1,12 +1,12 @@
-# PHP Traffic Volumizer
+## PHP Traffic Volumizer
 
 > DISCLAIMER: complete anonymity on the internet, is extremely difficult if not impossible. Especially with ML and AI profilers nowadays. Once connected to the internet, all bets are off. If you do/plan something bad, sooner or later you WILL get caught. If you are an activist, journalist, dissident, whistleblower, please take extreme caution and if possible consult a internet security expert for solid advice on how to stay anonymous in the ML/AI age. Tor is good, but it's not bulletproof. Visit: https://ssd.eff.org for more info.
 
-# Anti Traffic Volume Analysis
+## Anti Traffic Volume Analysis
 
 > In short: Most websites have a largely fixed total page size, with only minor variations. This means the total number of bytes transferred when loading a page is often predictable. An observer can measure this traffic volume, store it as a fingerprint, and build a database of such fingerprints for many websites. Even when an end‑to‑end connection is fully encrypted, a malicious actor can still observe traffic volume and timing. By comparing this metadata against a large, frequently updated database of known site fingerprints - which can be obtained by continuously crawling large parts of the IPv4 space - the observer can often infer which website a user is visiting in real time. This technique is known as traffic volume analysis (or website fingerprinting). While encryption protects the content of communication, it does not hide metadata such as packet sizes and transfer patterns. There are mitigation techniques, but they typically involve trade‑offs in bandwidth, latency, or usability.
 
-## What is Traffic Volume Analysis?
+### What is Traffic Volume Analysis?
 
 Traffic volume analysis is a surveillance technique where adversaries monitor the size and timing of encrypted network traffic to identify patterns and extract information-even when they cannot decrypt the actual content.
 
@@ -19,7 +19,7 @@ When you visit a website over HTTPS or through a VPN, the data itself is encrypt
 
 This is particularly concerning because it bypasses encryption entirely. Your VPN or HTTPS connection protects the content, but the "shape" of your traffic remains exposed.
 
-# Practical example
+### Practical example
 
 ```
 Client opens: example.com - index.html is 54Kb, and has a computed hash of 69c77deb9761cc44a59463b80208c884
@@ -39,7 +39,7 @@ and generating hashes for each unique URI. It can also precompute total hashleng
 
 ```
 
-## Risks
+### Risks
 
 ### Privacy Invasion
 Even with encryption, adversaries can build detailed profiles of your online behavior by analyzing traffic patterns. They can identify which websites you visit, how long you stay, and what actions you perform-all without breaking encryption.
@@ -66,13 +66,13 @@ The class generates cryptographically random data and embeds it into your HTML r
 
 ### Features
 
-- -8 Different Padding Methods: Randomly selects from HTML comments, hidden images, JSON-LD, CSS/JS comments, SVG elements, data attributes, and noscript tags
-- -Configurable Size Range: Set minimum and maximum padding sizes to match your needs
-- -Cryptographically Secure: Uses `random_bytes()` for unpredictable data generation
-- -User-Invisible: All padding is completely hidden from end users
-- -Flexible API: Single method or multiple methods per response
+-8 Different Padding Methods: Randomly selects from HTML comments, hidden images, JSON-LD, CSS/JS comments, SVG elements, data attributes, and noscript tags
+-Configurable Size Range: Set minimum and maximum padding sizes to match your needs
+-Cryptographically Secure: Uses `random_bytes()` for unpredictable data generation
+-User-Invisible: All padding is completely hidden from end users
+-Flexible API: Single method or multiple methods per response
 
-## Installation
+### Installation
 
 Simply include the `class.volumizer.php` class in your project:
 
@@ -80,7 +80,7 @@ Simply include the `class.volumizer.php` class in your project:
 require_once 'class.volumizer.php';
 ```
 
-## Usage
+### Usage
 
 ### Basic Usage
 
@@ -137,7 +137,7 @@ function apply_traffic_padding($content) {
 add_filter('final_output', 'apply_traffic_padding');
 ```
 
-## Configuration Options
+### Configuration Options
 
 ### Constructor Parameters
 
@@ -145,8 +145,8 @@ add_filter('final_output', 'apply_traffic_padding');
 new TrafficPadding(int $minSize, int $maxSize)
 ```
 
-- `$minSize`: Minimum padding size in bytes (default: 51200 = 50KB)
-- `$maxSize`: Maximum padding size in bytes (default: 5242880 = 5MB)
+`$minSize`: Minimum padding size in bytes (default: 51200 = 50KB)
+`$maxSize`: Maximum padding size in bytes (default: 5242880 = 5MB)
 
 ### Methods
 
@@ -162,16 +162,16 @@ Updates the padding size range.
 #### `getConfig(): array`
 Returns current configuration including min/max sizes and available methods count.
 
-## Available Padding Methods
+### Available Padding Methods
 
-1. -HTML Comments: `<!-- base64_data -->`
-2. -Hidden Base64 Images: Invisible 1x1 PNG with `display:none`
-3. -JSON-LD Structured Data: Valid but meaningless schema.org markup
-4. -CSS Comments: Inside `<style>` tags
-5. -JavaScript Comments: Inside `<script>` tags
-6. -Hidden SVG: SVG elements with `display:none` and data in `<desc>`
-7. -Data Attributes: Hidden divs with `data-*` attributes
-8. -Noscript Tags: Content invisible to JavaScript-enabled browsers
+1. HTML Comments: `<!-- base64_data -->`
+2. Hidden Base64 Images: Invisible 1x1 PNG with `display:none`
+3. JSON-LD Structured Data: Valid but meaningless schema.org markup
+4. CSS Comments: Inside `<style>` tags
+5. JavaScript Comments: Inside `<script>` tags
+6. Hidden SVG: SVG elements with `display:none` and data in `<desc>`
+7. Data Attributes: Hidden divs with `data-*` attributes
+8. Noscript Tags: Content invisible to JavaScript-enabled browsers
 
 ### Additional
 
@@ -199,14 +199,14 @@ foreach($selected as $header) {
 }
 ```
 
-## Performance Considerations
+### Performance Considerations
 
 Generating large amounts of random data and embedding it in every response has performance implications:
 
-- -CPU Usage: `random_bytes()` is cryptographically secure but CPU-intensive
-- -Bandwidth: Every response becomes 50KB-5MB larger
-- -Memory: Large padding strings consume RAM
-- -Page Load Time: Users download additional data
+- CPU Usage: `random_bytes()` is cryptographically secure but CPU-intensive
+- Bandwidth: Every response becomes 50KB-5MB larger
+- Memory: Large padding strings consume RAM
+- Page Load Time: Users download additional data
 
 ### Optimization Tips
 
@@ -216,30 +216,30 @@ Generating large amounts of random data and embedding it in every response has p
 4. -Monitor server resources: Watch CPU and memory usage under load
 5. -A/B test: Balance security with performance for your use case
 
-## Limitations
+### Limitations
 
 Traffic volumizer is not a complete solution to traffic analysis:
 
-- -Range-based analysis: Even with padding, a 100KB page padded to 200KB is distinguishable from a 1MB page
-- -Timing correlation: If a user loads Page A, then Page B, timing patterns can still reveal this sequence
-- -Behavioral patterns: Frequency and order of requests can still be analyzed
-- -Resource cost: Significant bandwidth and processing overhead
+-Range-based analysis: Even with padding, a 100KB page padded to 200KB is distinguishable from a 1MB page
+-Timing correlation: If a user loads Page A, then Page B, timing patterns can still reveal this sequence
+-Behavioral patterns: Frequency and order of requests can still be analyzed
+-Resource cost: Significant bandwidth and processing overhead
 
 For maximum protection against sophisticated adversaries, consider combining this with:
 
-- -Tor Browser: Onion routing provides stronger traffic analysis resistance
-- -Cover Traffic: Generate fake background requests
-- -Uniform Sizing: Pad all responses to exactly the same size
-- -Timing Obfuscation: Add random delays between requests
+-Tor Browser: Onion routing provides stronger traffic analysis resistance
+-Cover Traffic: Generate fake background requests
+-Uniform Sizing: Pad all responses to exactly the same size
+-Timing Obfuscation: Add random delays between requests
 
-## Security Notes
+### Security Notes
 
 - The class uses `random_bytes()` which is cryptographically secure
 - All padding methods are invisible to end users
 - Padding is added after your content, preserving HTML validity
 - No external dependencies or third-party libraries required
 
-## Threat Model
+### Threat Model
 
 This tool is designed to protect against:
 
@@ -255,11 +255,11 @@ This tool provides limited protection against:
 - Sophisticated machine learning-based traffic analysis
 - Attackers who can analyze long-term behavioral patterns
 
-## License
+### License
 
 MIT License - Free to use, modify, and distribute.
 
-## Contributing
+### Contributing
 
 Contributions are welcome! Consider adding:
 
@@ -269,6 +269,6 @@ Contributions are welcome! Consider adding:
 - Statistical analysis of effectiveness
 - Integration examples for popular frameworks
 
-## Disclaimer
+### Disclaimer
 
 This tool provides a layer of obfuscation against traffic volume analysis but is not a silver bullet. It should be part of a comprehensive security strategy that includes encryption, VPNs, Tor, and operational security practices. Always assess your specific threat model and consult security professionals for high-stakes scenarios.
