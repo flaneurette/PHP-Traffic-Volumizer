@@ -173,6 +173,29 @@ Returns current configuration including min/max sizes and available methods coun
 7. -Data Attributes: Hidden divs with `data-*` attributes
 8. -Noscript Tags: Content invisible to JavaScript-enabled browsers
 
+### Additional
+
+You could also pad the headers to add small variations:
+
+```
+$fake_headers = [
+    'X-Cache-Node',
+    'X-Request-ID', 
+    'X-Served-By',
+    'X-Timer',
+    'X-Edge-Node',
+    'X-Powered-Node',
+];
+
+// pick random subset
+$count = rand(2, 5);
+$selected = array_rand(array_flip($fake_headers), $count);
+
+foreach($selected as $header) {
+    header("$header: " . bin2hex(random_bytes(rand(4,64))));
+}
+```
+
 ## Performance Considerations
 
 Generating large amounts of random data and embedding it in every response has performance implications:
