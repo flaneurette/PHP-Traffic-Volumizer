@@ -195,7 +195,7 @@ $count = rand(2, 5);
 $selected = array_rand(array_flip($fake_headers), $count);
 
 foreach($selected as $header) {
-    header("$header: " . bin2hex(random_bytes(rand(4,64))));
+    header("$header: " . bin2hex(random_bytes(rand(4,32))));
 }
 ```
 
