@@ -13,8 +13,11 @@ Traffic volume analysis is a surveillance technique where adversaries monitor th
 When you visit a website over HTTPS or through a VPN, the data itself is encrypted. However, metadata remains visible: packet sizes, timing, frequency, and volume. Sophisticated attackers can create "fingerprints" by hashing these traffic patterns. Even with strong encryption, they can determine:
 
 -Which specific pages you're visiting (homepage vs. profile vs. settings)
+
 -What actions you're performing (uploading a photo vs. sending a message)
+
 -Your browsing patterns and behavior
+
 -Identity correlation across different sessions
 
 This is particularly concerning because it bypasses encryption entirely. Your VPN or HTTPS connection protects the content, but the "shape" of your traffic remains exposed.
@@ -28,16 +31,16 @@ Client opens: example.com/news/2/ -index.html is 211Kb, and has a computed hash 
 Client opens: example.com/news/3/ -index.html is 167Kb, and has a computed hash of 1981de5ba1d40c229707540654e158d6
 Client opens: example.com/profile/ -index.html is 65Kb, and has a computed hash of 46e7c6e355b9a9ca4d17a9be9a20c639
 etc.
+```
 
 The more interactions of a client, the better we can predict/guess which site is being visited.
 
-All page sizes combined, results in a unique hash: a2d65e2d7d36e5b4dac127a20a7be956
+All page sizes combined, results in a unique hash: `a2d65e2d7d36e5b4dac127a20a7be956`
 
 Advanced traffic analysis simply pre-computes every pattern on a given site by scraping ipv4 space on a daily basis (very simple),
 and generating hashes for each unique URI. It can also precompute total hashlength, or analyze this in real time:
 -> predictable pattern, guess accuracy is very high, higher if the user stays on a website for a long time.
 
-```
 
 ### Risks
 
@@ -66,10 +69,14 @@ The class generates cryptographically random data and embeds it into your HTML r
 
 ### Features
 
--8 Different Padding Methods: Randomly selects from HTML comments, hidden images, JSON-LD, CSS/JS comments, SVG elements, data attributes, and noscript tags
+-Different Padding Methods: Randomly selects from HTML comments, hidden images, JSON-LD, CSS/JS comments, SVG elements, data attributes, and noscript tags
+
 -Configurable Size Range: Set minimum and maximum padding sizes to match your needs
+
 -Cryptographically Secure: Uses `random_bytes()` for unpredictable data generation
+
 -User-Invisible: All padding is completely hidden from end users
+
 -Flexible API: Single method or multiple methods per response
 
 ### Installation
@@ -204,8 +211,11 @@ foreach($selected as $header) {
 Generating large amounts of random data and embedding it in every response has performance implications:
 
 -CPU Usage: `random_bytes()` is cryptographically secure but CPU-intensive
+
 -Bandwidth: Every response becomes 50KB-5MB larger
+
 -Memory: Large padding strings consume RAM
+
 -Page Load Time: Users download additional data
 
 ### Optimization Tips
@@ -221,22 +231,31 @@ Generating large amounts of random data and embedding it in every response has p
 Traffic volumizer is not a complete solution to traffic analysis:
 
 -Range-based analysis: Even with padding, a 100KB page padded to 200KB is distinguishable from a 1MB page
+
 -Timing correlation: If a user loads Page A, then Page B, timing patterns can still reveal this sequence
+
 -Behavioral patterns: Frequency and order of requests can still be analyzed
+
 -Resource cost: Significant bandwidth and processing overhead
 
 For maximum protection against sophisticated adversaries, consider combining this with:
 
 -Tor Browser: Onion routing provides stronger traffic analysis resistance
+
 -Cover Traffic: Generate fake background requests
+
 -Uniform Sizing: Pad all responses to exactly the same size
+
 -Timing Obfuscation: Add random delays between requests
 
 ### Security Notes
 
 -The class uses `random_bytes()` which is cryptographically secure
+
 -All padding methods are invisible to end users
+
 -Padding is added after your content, preserving HTML validity
+
 -No external dependencies or third-party libraries required
 
 ### Threat Model
@@ -244,15 +263,21 @@ For maximum protection against sophisticated adversaries, consider combining thi
 This tool is designed to protect against:
 
 -Casual ISP monitoring and logging
+
 -Automated traffic fingerprinting systems
+
 -Basic traffic pattern analysis
+
 -Simple hash-based page identification
 
 This tool provides limited protection against:
 
 -State-level adversaries with advanced analysis capabilities
+
 -Targeted surveillance with timing correlation
+
 -Sophisticated machine learning-based traffic analysis
+
 -Attackers who can analyze long-term behavioral patterns
 
 ### License
