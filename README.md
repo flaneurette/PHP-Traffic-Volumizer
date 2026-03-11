@@ -175,7 +175,10 @@ Returns current configuration including min/max sizes and available methods coun
 
 ### Additional
 
-You could also pad the headers to add small variations:
+You could also pad the headers to add small variations.
+
+Think off your own headers, and change/add them to add more randomness.
+This is especially useful in SSL/TLS requests.
 
 ```
 $fake_headers = [
